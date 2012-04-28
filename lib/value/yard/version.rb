@@ -8,7 +8,7 @@ module Value::YARD
   Version = Inventory.new(1, 1, 0){
     def dependencies
       super + Inventory::Dependencies.new{
-        development 'inventory-rake', 1, 2, 0
+        development 'inventory-rake', 1, 3, 0
         development 'lookout', 3, 0, 0
         development 'lookout-rake', 3, 0, 0
         optional 'yard', 0, 7, 0
