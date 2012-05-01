@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Value namespace.
-module Value
-end
-
 # Namespace for YARD extensions for Value.
-module Value::YARD
-  load File.expand_path('../yard/version.rb', __FILE__)
+module YARDValue
+  load File.expand_path('../yard-value/version.rb', __FILE__)
   Version.load
 end
 
@@ -59,5 +55,3 @@ class YARD::Handlers::Ruby::ValuesHandler < YARD::Handlers::Ruby::Base
     return '%s, and %s' % [items[0..-2].join(', '), items[-1]]
   end
 end
-
-YARD::Handlers::Ruby::MacroHandler::IGNORE_METHODS['Value'] = true

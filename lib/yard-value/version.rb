@@ -2,23 +2,15 @@
 
 require 'inventory-1.0'
 
-module Value end
-
-module Value::YARD
-  Version = Inventory.new(1, 1, 0){
+module YARDValue
+  Version = Inventory.new(1, 2, 0){
     def dependencies
       super + Inventory::Dependencies.new{
         development 'inventory-rake', 1, 3, 0
         development 'lookout', 3, 0, 0
         development 'lookout-rake', 3, 0, 0
-        optional 'yard', 0, 7, 0
+        runtime 'yard', 0, 8, 0, :feature => 'yard'
       }
-    end
-
-    def requires
-      %w'
-        yard
-      '
     end
   }
 end

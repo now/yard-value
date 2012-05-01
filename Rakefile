@@ -2,12 +2,12 @@
 
 require 'inventory/rake-1.0'
 
-load File.expand_path('../lib/value/yard/version.rb', __FILE__)
+load File.expand_path('../lib/yard-value/version.rb', __FILE__)
 
-Inventory::Rake::Tasks.define Value::YARD::Version, :gem => proc{ |_, s|
+Inventory::Rake::Tasks.define YARDValue::Version, :gem => proc{ |_, s|
   s.author = 'Nikolai Weibull'
   s.email = 'now@bitwi.se'
-  s.homepage = 'https://github.com/now/value-yard'
+  s.homepage = 'https://github.com/now/yard-value'
 }
 
 Inventory::Rake::Tasks.unless_installing_dependencies do
