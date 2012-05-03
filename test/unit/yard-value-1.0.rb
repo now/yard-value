@@ -24,6 +24,17 @@ EOS
     YARD::Registry.at('A#initialize').docstring
   end
 
+  expect %w'Proc' do
+    YARD::Registry.clear
+    YARD::Parser::SourceParser.parse_string(<<EOS)
+class A
+  # @param [String] a
+  Value(:a, :'&b')
+end
+EOS
+    YARD::Registry.at('A#initialize').docstring.tags(:param).find{ |e| e.name == 'b' }.types
+  end
+
   expect [['a', nil], ['b', '3']] do
     YARD::Registry.clear
     YARD::Parser::SourceParser.parse_string(<<EOS)

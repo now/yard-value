@@ -3,7 +3,7 @@
 require 'inventory-1.0'
 
 module YARDValue
-  Version = Inventory.new(1, 2, 0){
+  Version = Inventory.new(1, 2, 1){
     def dependencies
       super + Inventory::Dependencies.new{
         development 'inventory-rake', 1, 3, 0

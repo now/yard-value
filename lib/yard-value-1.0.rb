@@ -22,6 +22,14 @@ class YARD::Handlers::Ruby::ValuesHandler < YARD::Handlers::Ruby::Base
     end
     ancestor 'Value'
     initialize = define('initialize', parameters.map{ |e| [e.jump(:ident).source, e.type == :array ? e[0][1].source : nil] })
+    if initialize.parameters.last.first =~ /\A&/
+      base = initialize.parameters.last.first.sub(/\A&/, '')
+      if tag = initialize.docstring.tags.find{ |e| e.tag_name == 'param' and e.name == base }
+        tag.types = %w'Proc' unless tag.types
+      else
+        initialize.docstring.add_tag YARD::Tags::Tag.new(:param, '', %w'Proc', base)
+      end
+    end
     initialize.docstring.tags(:param).select{ |e| e.text and not e.text.empty? }.each do |e|
         define e.name.sub(/\A[&*]/, ''), [],
                '@return [%s] %s' % [e.types ? e.types.join(', ') : '', e.text], :protected
