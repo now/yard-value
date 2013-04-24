@@ -1,5 +1,112 @@
                                   YARD-Value
 
-  YARD-Value provides YARD handlers for Value¹ objects.
+  YARD-Value provides YARD¹ handlers for Value² objects.  It’ll document
+  whether the Value is Comparable and what attributes are used in such
+  comparisons, its #initialize method, and its protected accessors.
 
-¹ Check out the Value library at http://disu.se/software/value
+¹ See http://yardoc.org/
+² See http://disu.se/software/value/
+
+  You add the documentation to the Module#Value invocation.  Any ‹@param› tags
+  are used both for the parameters to the #initialize method and for the
+  protected accessors.
+
+  This
+
+    class Point
+      # A point on a plane.
+      # @param [Integer] x
+      # @param [Integer] y
+      Value :x, :y
+    end
+
+  generates documentation similar to
+
+    class Point
+      # A point on a plane.
+      # @param [Integer] x
+      # @param [Integer] y
+      def initialize(x, y)
+    end
+
+  and this
+
+    class Point
+      # A point on a plane.
+      # @param [Integer] x The x coordinate of the receiver
+      # @param [Integer] y The y coordinate of the receiver
+      Value :x, :y
+    end
+
+   generates documentation similar to
+
+    class Point
+      # A point on a plane.
+      # @param [Integer] x
+      # @param [Integer] y
+      def initialize(x, y)
+
+      protected
+
+      # @return [Integer] The x coordinate of the receiver
+      attr_reader :x
+
+      # @return [Integer] The y coordinate of the receiver
+      attr_reader :y
+    end
+
+  For comparable Values, a note is added about what attributes are used in the
+  comparison.  This
+
+    class Point
+      # A point on a plane.
+      # @param [Integer] x
+      # @param [Integer] y
+      Value :x, :y, :comparable => true
+    end
+
+  is similar to
+
+    class Point
+      # A point on a plane.
+      # @param [Integer] x
+      # @param [Integer] y
+      # @note Comparisons between instances are made between x and y.
+      def initialize(x, y)
+    end
+
+§ Usage
+
+    Add ‹--plugin yard-value-1.0› to your YARD command line.  If you’re
+    using Inventory-Rake-Tasks-YARD¹, add the following to your Rakefile:
+
+      Inventory::Rake::Tasks::YARD.new do |t|
+        t.options += %w'--plugin yard-value-1.0'
+      end
+
+¹ See http://disu.se/software/inventory-rake-tasks-yard/
+
+§ Financing
+
+    Currently, most of my time is spent at my day job and in my rather busy
+    private life.  Please motivate me to spend time on this piece of software
+    by donating some of your money to this project.  Yeah, I realize that
+    requesting money to develop software is a bit, well, capitalistic of me.
+    But please realize that I live in a capitalistic society and I need money
+    to have other people give me the things that I need to continue living
+    under the rules of said society.  So, if you feel that this piece of
+    software has helped you out enough to warrant a reward, please PayPal a
+    donation to now@disu.se¹.  Thanks!  Your support won’t go unnoticed!
+
+¹ Send a donation:
+  https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=now%40disu%2ese&item_name=Nikolai%20Weibull%20Software%20Services
+
+§ Reporting Bugs
+
+    Please report any bugs that you encounter to the {issue tracker}¹.
+
+  ¹ See https://github.com/now/yard-value/issues
+
+§ Authors
+
+    Nikolai Weibull wrote the code, the tests, and this README.
