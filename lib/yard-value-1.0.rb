@@ -2,7 +2,7 @@
 
 # Namespace for YARD extensions for Value.
 module YARDValue
-  load File.expand_path('../yard-value/version.rb', __FILE__)
+  load File.expand_path('../yard-value-1.0/version.rb', __FILE__)
   Version.load
 end
 
