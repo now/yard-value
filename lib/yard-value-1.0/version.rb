@@ -3,10 +3,10 @@
 require 'inventory-1.0'
 
 module YARDValue
-  Version = Inventory.new(1, 2, 2){
+  Version = Inventory.new(1, 2, 3){
     def dependencies
       super + Inventory::Dependencies.new{
-        development 'inventory-rake', 1, 3, 0
+        development 'inventory-rake', 1, 4, 0
         development 'lookout', 3, 0, 0
         development 'lookout-rake', 3, 0, 0
         runtime 'yard', 0, 8, 0, :feature => 'yard'
