@@ -5,7 +5,7 @@
   comparisons, its #initialize method, and its protected accessors.
 
 ¹ See http://yardoc.org/
-² See http://disu.se/software/value/
+² See http://disu.se/software/value-1.0/
 
   You add the documentation to the Module#Value invocation.  Any ‹@param› tags
   are used both for the parameters to the #initialize method and for the
