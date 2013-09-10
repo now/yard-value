@@ -8,7 +8,7 @@ module YARDValue
       author 'Nikolai Weibull', 'now@disu.se'
     }
 
-    homepage 'http://disu.se/software/yard-value/'
+    homepage 'http://disu.se/software/yard-value-1.0/'
 
     licenses{
       license 'LGPLv3+',
