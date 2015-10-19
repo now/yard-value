@@ -21,7 +21,9 @@ class YARD::Handlers::Ruby::ValuesHandler < YARD::Handlers::Ruby::Base
       ancestor 'Value::Comparable'
     end
     ancestor 'Value'
-    initialize = define('initialize', parameters.map{ |e| [e.jump(:ident).source, e.type == :array ? e[0][1].source : nil] })
+    initialize = define('initialize',
+                        parameters.map{ |e| [e.jump(:ident).source, e.type == :array ? e[0][1].source : nil] },
+                        statement.docstring)
     if initialize.parameters.last.first =~ /\A&/
       base = initialize.parameters.last.first.sub(/\A&/, '')
       if tag = initialize.docstring.tags.find{ |e| e.tag_name == 'param' and e.name == base }

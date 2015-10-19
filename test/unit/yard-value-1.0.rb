@@ -62,7 +62,7 @@ EOS
     YARD::Parser::SourceParser.parse_string(<<EOS)
 class A
   # @param [String] a
-  # @param [Integer] *b The b
+  # @param [Integer] b The b
   Value(:a, :'*b')
 end
 EOS
@@ -74,7 +74,7 @@ EOS
     YARD::Parser::SourceParser.parse_string(<<EOS)
 class A
   # @param [String] a
-  # @param [Integer] &b The b
+  # @param [Integer] b The b
   Value(:a, :'&b')
 end
 EOS
