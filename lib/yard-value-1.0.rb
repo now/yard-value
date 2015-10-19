@@ -45,15 +45,20 @@ class YARD::Handlers::Ruby::ValuesHandler < YARD::Handlers::Ruby::Base
 
   def define(name, parameters, docstring = nil, visibility = :public)
     YARD::CodeObjects::MethodObject.new(namespace, name).tap{ |m|
-      register m
-      register_docstring m, docstring if docstring
+      m.parameters = parameters
+      register_file_info m
+      register_source m
+      register_visibility m, visibility
+      register_docstring m, docstring
+      register_group m
+      register_module_function m
+      m.parameters = parameters
       m.signature = 'def %s%s' %
         [name,
          parameters.empty? ?
            '' :
            '(%s)' % parameters.map{ |n, d| d ? '%s = %s' % [n, d] : n }.join(', ')]
-      m.parameters = parameters
-      m.visibility = visibility
+      m.dynamic = true
     }
   end
 

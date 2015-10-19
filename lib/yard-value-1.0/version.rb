@@ -3,7 +3,7 @@
 require 'inventory-1.0'
 
 module YARDValue
-  Version = Inventory.new(1, 2, 4){
+  Version = Inventory.new(1, 2, 5){
     authors{
       author 'Nikolai Weibull', 'now@disu.se'
     }
